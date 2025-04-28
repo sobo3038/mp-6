@@ -15,8 +15,8 @@ export default function CallbackPage() {
       const code = url.searchParams.get('code');
       if (!code) return;
       const res = await fetch(`/api/callback?code=${code}`);
-      const data = await res.json();
-      setUser({ login: data.login }); 
+      const data: { login: string } = await res.json();
+      setUser({ login: data.login });
       window.history.replaceState({}, document.title, '/callback');
     };
 
