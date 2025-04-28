@@ -16,7 +16,7 @@ export default function CallbackPage() {
       if (!code) return;
       const res = await fetch(`/api/callback?code=${code}`);
       const data = await res.json();
-      setUser(data);
+      setUser({ login: data.login }); 
       window.history.replaceState({}, document.title, '/callback');
     };
 
