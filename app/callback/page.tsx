@@ -5,17 +5,19 @@ import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import UserInfo from '@/components/UserInfo';
 
-interface GitHubUser {login: string;}
+interface GitHubUser { login: string; }
+type UserState = GitHubUser | null; 
+
 export default function CallbackPage() {
-  const [user, setUser] = useState<GitHubUser | null>(null);
+  const [user, setUser] = useState<UserState>(null); 
 
   useEffect(() => {
     const fetchUser = async () => {
       const url = new URL(window.location.href);
-      const code = url.searchParams.get('code') as string | null; 
+      const code = url.searchParams.get('code') as string | null;
       if (!code) return;
       const res = await fetch(`/api/callback?code=${code}`);
-      const data: { login: string } = await res.json(); 
+      const data: { login: string } = await res.json();
       setUser({ login: data.login });
       window.history.replaceState({}, document.title, '/callback');
     };
