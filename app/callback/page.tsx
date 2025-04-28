@@ -6,13 +6,13 @@ import Header from '@/components/Header';
 import UserInfo from '@/components/UserInfo';
 
 interface GitHubUser { login: string; }
-type UserState = GitHubUser | null; 
+type UserState = GitHubUser | null;
 
 export default function CallbackPage() {
-  const [user, setUser] = useState<UserState>(null); 
+  const [user, setUser] = useState<UserState>(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUser = async (): Promise<void> => {  
       const url = new URL(window.location.href);
       const code = url.searchParams.get('code') as string | null;
       if (!code) return;
