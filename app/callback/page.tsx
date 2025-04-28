@@ -12,10 +12,10 @@ export default function CallbackPage() {
   useEffect(() => {
     const fetchUser = async () => {
       const url = new URL(window.location.href);
-      const code = url.searchParams.get('code');
+      const code = url.searchParams.get('code') as string | null; 
       if (!code) return;
       const res = await fetch(`/api/callback?code=${code}`);
-      const data: { login: string } = await res.json();
+      const data: { login: string } = await res.json(); 
       setUser({ login: data.login });
       window.history.replaceState({}, document.title, '/callback');
     };
