@@ -1,5 +1,5 @@
 // app/api/login/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import {NextResponse } from 'next/server';
 
 export async function GET() { 
     const clientId = process.env.GITHUB_CLIENT_ID!;
