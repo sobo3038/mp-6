@@ -1,5 +1,4 @@
 //components/UserInfo.tsx
-
 'use client';
 
 interface UserInfoProps {
