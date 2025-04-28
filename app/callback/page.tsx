@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import UserInfo from '@/components/UserInfo';
 
+interface GitHubUser {login: string;}
 export default function CallbackPage() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<GitHubUser | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
